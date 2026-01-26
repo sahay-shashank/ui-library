@@ -1,0 +1,16 @@
+/* IconButton.module.css */
+.button {
+    /* IconButton fixed variables */
+    border: none;
+    background: none;
+    padding: 8px;
+    cursor: pointer;
+
+    /* IconButton CSS tokens */
+    color: var(--icon-button-color, currentColor);
+
+    backdrop-filter: blur(var(--icon-button-blur, 8px));
+    -webkit-backdrop-filter: blur(var(--icon-button-blur, 8px));
+    background: var(--icon-button-bg, rgba(255, 255, 255, 0.2));
+    border-radius: var(--icon-button-radius, 8px);
+}

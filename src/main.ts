@@ -1,2 +1,3 @@
-export { Button, type ButtonProps } from './components/Button/index'
-export { NavBar } from './components/NavBar/index' 
+export { Button, type ButtonProps } from './components/Button'
+export { NavBar } from './components/NavBar'
+export { IconButton, type IconButtonProps } from './components/IconButton'
