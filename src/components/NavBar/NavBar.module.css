@@ -1,100 +1,118 @@
 .navbar {
+    /* CSS NavBar fixed variables */
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    height: 64px;
-    padding: 0 24px;
-
-    background-color: rgba(105, 105, 105, 0.2);
-    backdrop-filter: blur(10px);
-    --webkit-backdrop-filter: blur(10px);
-
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s, backdrop-filter 0.3s;
-
-    z-index: 50;
-
-    border-radius: 10px;
     position: sticky;
+    top: 0;
+
+    /* CSS NavBar Tokens */
+    height: var(--navbar-height, 64px);
+    padding: 0 var(--navbar-padding-x, 24px);
+
+    background-color: var(--navbar-bg, rgba(105, 105, 105, 0.2));
+    backdrop-filter: blur(var(--navbar-blur, 10px));
+    -webkit-backdrop-filter: blur(var(--navbar-blur, 10px));
+
+    border-bottom: var(--navbar-border-width, 2px) solid var(--navbar-border-color, rgba(255, 255, 255, 0.2));
+    box-shadow: var(--navbar-shadow, 0 4px 30px rgba(0, 0, 0, 0.05));
+
+    z-index: var(--navbar-z-index, 50);
+
+    border-radius: var(--navbar-radius, 10px);
+
+    transition: background-color var(--navbar-transition, 0.3s), backdrop-filter var(--navbar-transition, 0.3s);
+
+}
+
+.navbar[data-open] {
+    --navbar-bg: rgba(105, 105, 105, 0.35);
 }
 
 .logo {
-    font-size: 1.25rem;
-    font-weight: 600;
+    /* CSS NavBar.Logo fixed variable */
+    white-space: nowrap;
+
+    /* CSS NavBar.Logo Tokens */
+    font-size: var(--navbar-logo-size, 1.25rem);
+    font-weight: var(--navbar-logo-weight, 600);
 }
 
 .links {
+    /* CSS NavBar.Links fixed variables */
     display: flex;
-    gap: 24px;
     list-style: none;
+    align-items: center;
     padding: 0;
     margin: 0;
+
+    /* CSS NavBar.Links Tokens */
+    gap: var(--navbar-link-gap, 24px);
 }
 
 .link {
+    /* CSS NavBar.LinkItem fixed variables */
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.5s ease;
+    cursor: pointer;
+
+    /* CSS NavBar.LinkItem Tokens */
+    font-weight: var(--navbar-link-item-weight, 500);
+    color: var(--navbar-link-item-color, inherit);
+    transition: color var(--navbar-link-item-transition, 0.5s) ease;
 }
 
 .link:hover {
-    color: greenyellow;
-    filter: brightness(1.2);
+    /* CSS NavBar.LinkItem Hover Tokens */
+    color: var(--navbar-link-item-hover-color, currentColor);
+    filter: var(--navbar-link-item-hover-filter, none);
+}
+
+.link:focus-visible {
+    /* CSS NavBar.LinkItem Focus-Visible fixed variables */
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }
 
 .actions {
+    /* CSS NavBar.Actions Focus-Visible fixed variables */
     display: flex;
-    gap: 12px;
+    align-items: center;
+
+    /* CSS NavBar.Actions Tokens */
+    gap: var(--navbar-actions-gap, 12px);
 }
 
-/* Hamburger */
-/* .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-}
-
-.bar {
-    width: 24px;
-    height: 2px;
-    background-color: #374151;
-    transition: all 0.3s ease;
-} */
-
-/* Mobile menu */
-/* .mobileMenu {
-    display: none;
-    flex-direction: column;
-    list-style: none;
-    padding: 12px 24px;
-    background-color: rgba(105, 105, 105, 0.2);
-    backdrop-filter: blur(10px);
-    --webkit-backdrop-filter: blur(10px);
-
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s, backdrop-filter 0.3s;
+.collapse {
+    /* CSS NavBar.Collapse  fixed variables */
     position: absolute;
-    align-items: end;
-    top: 64px;
-    left: 24px;
-    width: 100%;
-} */
+    inset-inline: 0;
+    top: 100%;
 
-/* Responsive */
-/* @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+
+    /* CSS NavBar.Collapse Tokens */
+    padding: var(--navbar-collapse-padding, 16px);
+
+    background-color: var(--navbar-bg, rgba(105, 105, 105, 0.2));
+    backdrop-filter: blur(var(--navbar-blur, 10px));
+    -webkit-backdrop-filter: blur(var(--navbar-blur, 10px));
+
+    border-bottom: var(--navbar-border-width, 1px) solid var(--navbar-border-color, rgba(255, 255, 255, 0.2));
+
+    box-shadow: var(--navbar-shadow, 0 4px 30px rgba(0, 0, 0, 0.05));
+
+    border-radius: var(--navbar-radius, 10px);
+
+}
+
+@media (max-width: 768px) {
     .links {
         display: none;
     }
 
-    .hamburger {
+    .collapse .links {
         display: flex;
     }
-
-    .mobileMenu {
-        display: flex;
-    }
-} */
+}
